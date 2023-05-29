@@ -12,4 +12,8 @@ public partial class ТипИнвентаря
     public string? ОписаниеТипа { get; set; }
 
     public virtual ICollection<Инвентарь> Инвентарьs { get; set; } = new List<Инвентарь>();
+    public override string ToString()
+    {
+        return НаименованиеТипа;
+    }
 }

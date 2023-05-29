@@ -25,9 +25,9 @@ public partial class Инвентарь
     [Description("Стоимость")]
     public decimal? Стоимость { get; set; }
 
-    [Description("Тип")]
     public int? КодТипа { get; set; }
 
+    [Description("Тип")]
     public virtual ТипИнвентаря? КодТипаNavigation { get; set; }
 
     public virtual ICollection<Спектакли> КодСпектакляs { get; set; } = new List<Спектакли>();

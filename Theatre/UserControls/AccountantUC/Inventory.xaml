@@ -15,6 +15,14 @@
                     Stretch="UniformToFill"/>
     </UserControl.Background>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="4*">
+
+            </RowDefinition>
+            <RowDefinition Height="*">
+
+            </RowDefinition>
+        </Grid.RowDefinitions>
         <md:Card VerticalAlignment="Center"
                  HorizontalAlignment="Center"
                  Margin="40 30 40 80"
@@ -22,11 +30,30 @@
             <DataGrid
             AutoGeneratingColumn="inventoryDG_AutoGeneratingColumn"
             Name="inventoryDG"
-            CanUserAddRows="False"
+            CanUserDeleteRows="True"
+            AddingNewItem="inventoryDG_AddingNewItem"
+            
             SelectionMode="Extended"
-            SelectionUnit="Cell" />
+            SelectionUnit="FullRow"
+            CanUserAddRows="True">
+                
+            </DataGrid>
         </md:Card>
         
-            
+            <Button
+  Grid.Row="1"
+  Height="45"
+                
+Name="Save"
+Click="Save_Click"
+VerticalAlignment="Center"
+HorizontalAlignment="Center"
+Padding="30 0"
+FontSize="18"
+  Content="Сохранить"
+  Style="{StaticResource MaterialDesignRaisedButton}"
+  ToolTip="Resource name: MaterialDesignRaisedButton" />
+
+
     </Grid>
 </UserControl>

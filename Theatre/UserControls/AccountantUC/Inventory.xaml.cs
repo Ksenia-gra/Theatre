@@ -47,6 +47,25 @@ namespace Theatre.UserControls.AccountantUC
             {
                 e.Column.IsReadOnly = true;
             }
+            if (e.PropertyType == typeof(DateOnly?))
+            {
+                (e.Column as DataGridTextColumn).Binding.StringFormat = "yyyy-MM-dd";
+            }
+        }
+
+        private void Save_Click(object sender, RoutedEventArgs e)
+        {
+
+            PostgresContext.Instance.SaveChanges();
+
+        }
+
+        private void inventoryDG_AddingNewItem(object sender, AddingNewItemEventArgs e)
+        {
+            e.NewItem = new Инвентарь()
+            {
+                IdИнвентаря = PostgresContext.Instance.Инвентарьs.Max(x => x.IdИнвентаря) + 1
+            };
         }
     }
 }
