@@ -1,0 +1,32 @@
+﻿<UserControl x:Class="Theatre.UserControls.AccountantUC.Inventory"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Theatre.UserControls.AccountantUC"
+             mc:Ignorable="d" 
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontSize="14"
+             FontFamily="{md:MaterialDesignFont}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Background>
+        <ImageBrush ImageSource="pack://application:,,,/images/theatre_back.jpg"
+                    Stretch="UniformToFill"/>
+    </UserControl.Background>
+    <Grid>
+        <md:Card VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 Margin="40 30 40 80"
+                 >
+            <DataGrid
+            AutoGeneratingColumn="inventoryDG_AutoGeneratingColumn"
+            Name="inventoryDG"
+            CanUserAddRows="False"
+            SelectionMode="Extended"
+            SelectionUnit="Cell" />
+        </md:Card>
+        
+            
+    </Grid>
+</UserControl>

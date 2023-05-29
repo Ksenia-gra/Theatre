@@ -1,0 +1,112 @@
+﻿<UserControl x:Class="Theatre.UserControls.BuyTicket"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Theatre.UserControls"
+             mc:Ignorable="d" 
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontSize="14"
+             FontFamily="{md:MaterialDesignFont}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Background>
+        <ImageBrush ImageSource="pack://application:,,,/images/theatre_back.jpg"
+                    Stretch="UniformToFill"/>
+    </UserControl.Background>
+    <Grid>
+        <md:Card HorizontalAlignment="Center" VerticalAlignment="Center"
+             Width="300"
+             Height="250"
+             Padding="10"
+             UniformCornerRadius="10"
+             BorderThickness="1"
+             BorderBrush="Black"
+             md:ElevationAssist.Elevation="Dp16">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Билет" TextAlignment="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="{Binding Path=Foreground, ElementName=BuyTick}">
+
+                </TextBlock>
+                <ComboBox
+                    VerticalAlignment="Center"
+                    SelectionChanged="PerfName_SelectionChanged"
+                    x:Name="PerfName"
+                    Margin="15 10 15 0"
+                    Grid.Row="1"
+                    md:HintAssist.Hint="Выберите спектакль"
+    
+                    ItemsSource="{Binding ShortStringList}"
+                    Style="{StaticResource MaterialDesignOutlinedComboBox}" />
+
+                <ComboBox
+                    VerticalAlignment="Center"
+                    
+    x:Name="tikets"
+                Margin="15 10 15 0"
+                    Grid.Row="2"
+    md:HintAssist.Hint="Выберите билет"
+   
+    Style="{StaticResource MaterialDesignOutlinedComboBox}" >
+
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="Спектакль: {0}&#x0a;Дата: {1}
+                                                  &#x0a;Время: {2}&#x0a;Ряд: {3}&#x0a;Номер места: {4}
+                                                  &#x0a;Тип места: {5} &#x0a;Стоимость: {6}">
+                                            <Binding Path="PerfomanceName"/>
+                                            <Binding Path="ScheduleDate"/>
+                                            <Binding Path="ScheduleTime"/>
+                                            <Binding Path="PlaceRow"/>
+                                            <Binding Path="PlaceNumber"/>
+                                            <Binding Path="PlaceTipe"/>
+                                            <Binding Path="Cost"/>
+
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <Separator Margin="0 10"></Separator>
+                            </StackPanel>
+                            
+                            
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+                    
+                </ComboBox>
+                <Button Grid.Row="3"
+                Content="Купить билет"
+                x:Name="BuyTick"
+                Height="35"
+                Width="230"
+                Click="BuyTick_Click"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Padding="30 0"
+                FontSize="20"
+                Margin="0 10 0 0"
+                
+                Style="{StaticResource MaterialDesignOutlinedButton}"
+                >
+
+                </Button>
+                
+
+            </Grid>
+        </md:Card >
+    </Grid>
+</UserControl>

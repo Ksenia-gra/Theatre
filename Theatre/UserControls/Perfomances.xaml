@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="Theatre.UserControls.Perfomances"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Theatre.UserControls"
+             mc:Ignorable="d" 
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontSize="14"
+             FontFamily="{md:MaterialDesignFont}"
+             d:DesignHeight="450" d:DesignWidth="800">
+
+    <UserControl.Background>
+        <ImageBrush ImageSource="pack://application:,,,/images/theatre_back.jpg"
+                    Stretch="UniformToFill"/>
+    </UserControl.Background>
+    <Grid>
+        <ScrollViewer>
+            <ItemsControl  Name="icPerf">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <md:Card Margin="10" Padding="10" Width="450" md:ElevationAssist.Elevation="Dp12">
+                            <DockPanel>
+                                <TextBlock FontSize="14" Foreground="Black">
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="Спектакль: {0}&#x0a;Жанр: {1}">
+                                            <Binding Path="НазваниеСпектакля"/>
+                                            <Binding Path="КодЖанраСпектакляNavigation.НаименованиеЖанра"/>
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <Button HorizontalAlignment="Right" 
+                                        Name="moreInfo"
+                                            Content="Подробнее" Click="moreInfo_Click"
+                                       
+                                            >
+
+                                </Button>
+                            </DockPanel>
+                            
+                        </md:Card>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        
+
+    </Grid>
+</UserControl>

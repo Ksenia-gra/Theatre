@@ -1,0 +1,98 @@
+﻿<UserControl x:Class="Theatre.UserControls.PerfomancesMoreIngo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Theatre.UserControls"
+             mc:Ignorable="d" 
+             xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+             TextElement.FontSize="14"
+             FontFamily="{md:MaterialDesignFont}"
+             d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.Background>
+        <ImageBrush ImageSource="pack://application:,,,/images/theatre_back.jpg"
+                    Stretch="UniformToFill"/>
+    </UserControl.Background>
+    <Grid>
+        <md:Card Margin="10" Padding="10" Width="300" VerticalAlignment="Center" md:ElevationAssist.Elevation="Dp12">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*">
+                        
+                    </RowDefinition>
+                    <RowDefinition Height="1*">
+
+                    </RowDefinition>
+                    <RowDefinition Height="0.5*">
+
+                    </RowDefinition>
+                    <RowDefinition Height="3*">
+
+                    </RowDefinition>
+                    <RowDefinition Height="*">
+
+                    </RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="{Binding НазваниеСпектакля}" TextAlignment="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontSize="18"
+                   FontWeight="Bold"
+                   Foreground="{Binding Path=Foreground, ElementName=BackToPerf}">
+            </TextBlock>
+                <TextBlock Text="{Binding КодЖанраСпектакляNavigation.НаименованиеЖанра}" Grid.Row="1" TextAlignment="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontSize="18"
+                   FontWeight="Bold"
+                    Margin="0 10"
+                   Foreground="{Binding Path=Foreground, ElementName=BackToPerf}">
+            </TextBlock>
+            
+                    
+                    <TextBlock Text="Роли" Grid.Row="2" TextAlignment="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontSize="14"
+                   
+                   Name="rolesText"
+                   Visibility="Collapsed"
+                   Foreground="{Binding Path=Foreground, ElementName=BackToPerf}">
+                    </TextBlock>
+                <ListView Grid.Row="3"
+                          FontSize="16"
+                          x:Name="roles"
+                          Visibility="Collapsed"
+                          md:ListBoxItemAssist.ShowSelection="False"
+                          md:ScrollViewerAssist.IsAutoHideEnabled="True"
+                          
+                          >
+                    
+                    
+                </ListView>
+                <Button Grid.Row="4"
+                Content="Назад"
+                x:Name="BackToPerf"
+                Height="35"
+                Width="230"
+                Click="BackToPerf_Click"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Padding="30 0"
+                FontSize="20"
+                Margin="0 10 0 0"
+                
+                Style="{StaticResource MaterialDesignOutlinedButton}"
+                >
+
+                </Button>
+
+
+            </Grid>   
+                
+        </md:Card>
+            
+    </Grid>
+</UserControl>
