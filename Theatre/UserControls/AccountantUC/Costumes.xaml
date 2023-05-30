@@ -15,6 +15,219 @@
                     Stretch="UniformToFill"/>
     </UserControl.Background>
     <Grid>
-            
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*">
+                
+            </ColumnDefinition>
+            <ColumnDefinition Width="*">
+
+            </ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <md:Card HorizontalAlignment="Center" VerticalAlignment="Center"
+             Width="300"
+             Height="350"
+             Padding="10"
+             UniformCornerRadius="10"
+             BorderThickness="1"
+             BorderBrush="Black"
+             md:ElevationAssist.Elevation="Dp16">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Создать договор" TextAlignment="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="{Binding Path=Foreground, ElementName=create}">
+
+                </TextBlock>
+                <ComboBox
+                    VerticalAlignment="Center"
+                    
+                    x:Name="provider"
+                    Margin="15 10 15 0"
+                    Grid.Row="1"
+                    md:HintAssist.Hint="Выберите поставщика"
+                    
+                    DisplayMemberPath="ИмяПоставщика"
+                    Style="{StaticResource MaterialDesignOutlinedComboBox}" />
+
+                <DatePicker
+                    Grid.Row="2"
+                Name="DatePick"
+                
+                HorizontalAlignment="Center"
+                SelectedDateFormat="Short"
+                
+                  Width="230"
+                  md:HintAssist.Hint="Дата оформления "
+                  md:TextFieldAssist.HasClearButton="True"
+                 Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                <TextBox
+                    Grid.Row="3"
+                  x:Name="dopInfo"
+                    VerticalAlignment="Center"
+                  Margin="20 10" 
+                  md:TextFieldAssist.HasClearButton="True"
+                  md:TextFieldAssist.HasLeadingIcon="True"
+                  md:TextFieldAssist.LeadingIcon="Contract"
+                  md:HintAssist.HelperText="Введите дополнительную информацию"
+                  md:HintAssist.Hint="Доп. информация"/>
+                <Button Grid.Row="4"
+                Content="Создать"
+                x:Name="create"
+                Height="35"
+                Width="230"
+                Click="create_Click"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Padding="30 0"
+                FontSize="20"
+                Margin="0 10 0 0"
+                
+                Style="{StaticResource MaterialDesignOutlinedButton}"
+                >
+
+                </Button>
+
+
+            </Grid>
+        </md:Card >
+
+        <md:Card HorizontalAlignment="Center" VerticalAlignment="Center"
+             Width="300"
+             Height="410"
+             Padding="10"
+             Grid.Column="1"
+             UniformCornerRadius="10"
+             BorderThickness="1"
+             BorderBrush="Black"
+             md:ElevationAssist.Elevation="Dp16">
+            <Grid>
+                
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Оформить заказ" TextAlignment="Center"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   Foreground="{Binding Path=Foreground, ElementName=create}">
+
+                </TextBlock>
+                <TextBox
+                    Grid.Row="1"
+                  x:Name="NameTextBox"
+                    VerticalAlignment="Center"
+                  Margin="20 10" 
+                  md:TextFieldAssist.HasClearButton="True"
+                  md:TextFieldAssist.HasLeadingIcon="True"
+                  md:TextFieldAssist.LeadingIcon="DramaMasks"
+                  md:HintAssist.HelperText="Введите название костюма"
+                  md:HintAssist.Hint="Название костюма"/>
+                <TextBox
+                    Grid.Row="2"
+                  x:Name="CostTextBox"
+                  PreviewTextInput="CostTextBox_PreviewTextInput"
+                    VerticalAlignment="Center"
+                  Margin="20 10" 
+                  md:TextFieldAssist.HasClearButton="True"
+                  md:TextFieldAssist.HasLeadingIcon="True"
+                  md:TextFieldAssist.LeadingIcon="Cash"
+                  md:HintAssist.HelperText="Введите стомость костюма"
+                  md:HintAssist.Hint="Стоимость костюма"/>
+                <ComboBox
+                    VerticalAlignment="Center"
+                    DisplayMemberPath="НазваниеТипа"
+                    x:Name="type"
+                    Margin="15 10 15 0"
+                    Grid.Row="3"
+                    md:HintAssist.Hint="Выберите тип костюма"
+    
+                    ItemsSource="{Binding ShortStringList}"
+                    Style="{StaticResource MaterialDesignOutlinedComboBox}" />
+
+                <ComboBox
+                    VerticalAlignment="Center"
+                    Grid.Row="4"
+    x:Name="contract"
+                Margin="15 5 15 0"
+                   
+    md:HintAssist.Hint="Выберите договор"
+   
+    Style="{StaticResource MaterialDesignOutlinedComboBox}" >
+
+                    <ComboBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel>
+                                <TextBlock>
+                                    <TextBlock.Text>
+                                        <MultiBinding StringFormat="Договор: {0}&#x0a;Поставщик: {1}
+                                                  &#x0a;Дата заключения: {2}&#x0a;">
+                                            <Binding Path="IdДоговора"/>
+                                            <Binding Path="КодПоставщикаNavigation.ИмяПоставщика"/>
+                                            <Binding Path="ДатаЗаключенияДоговора"/>
+                                            
+
+                                        </MultiBinding>
+                                    </TextBlock.Text>
+                                </TextBlock>
+                                <Separator Margin="0 10"></Separator>
+                            </StackPanel>
+
+
+                        </DataTemplate>
+                    </ComboBox.ItemTemplate>
+
+                </ComboBox>
+                <DatePicker
+                    Grid.Row="5"
+                Name="DatePickCost"
+                
+                Margin="0 5 0 0"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                SelectedDateFormat="Short"
+                
+                  Width="230"
+                  md:HintAssist.Hint="Дата оформления "
+                  md:TextFieldAssist.HasClearButton="True"
+                 Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+                <Button Grid.Row="6"
+                Content="Оформить"
+                x:Name="Arrange"
+                Height="35"
+                Width="230"
+                Click="Arrange_Click"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center"
+                Padding="30 0"
+                FontSize="20"
+                
+                
+                Style="{StaticResource MaterialDesignOutlinedButton}"
+                >
+
+                </Button>
+
+
+            </Grid>
+        </md:Card >
     </Grid>
 </UserControl>

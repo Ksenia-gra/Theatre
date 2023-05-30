@@ -87,5 +87,10 @@ namespace Theatre
         {
             Instance.myUc.Content = new Costumes();
         }
+
+        private void salesStatistic_Click(object sender, RoutedEventArgs e)
+        {
+            Instance.myUc.Content = new SaleStatistic();
+        }
     }
 }

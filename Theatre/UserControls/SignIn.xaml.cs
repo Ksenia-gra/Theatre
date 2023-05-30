@@ -56,6 +56,7 @@ namespace Theatre.UserControls
                                 MainWindow.ActiveUser = user;
                                 MainWindow.Instance.myUc.Content = new Inventory();
                                 MainWindow.Instance.accountentPan.Visibility = Visibility.Visible;
+                                
 
                             }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Reflection;
@@ -47,17 +48,25 @@ namespace Theatre.UserControls.AccountantUC
             {
                 e.Column.IsReadOnly = true;
             }
-            if (e.PropertyType == typeof(DateOnly?))
+            if (e.PropertyType == typeof(DateTime?))
             {
-                (e.Column as DataGridTextColumn).Binding.StringFormat = "yyyy-MM-dd";
+               (e.Column as DataGridTextColumn).Binding.StringFormat = "yyyy-MM-dd";
             }
         }
 
         private void Save_Click(object sender, RoutedEventArgs e)
         {
+            try
+            {
+                PostgresContext.Instance.SaveChanges();
+                MessageBox.Show("Изменения успешно сохранены", "Успешно", MessageBoxButton.OKCancel, MessageBoxImage.Information);
+            }
+            catch 
+            {
+                MessageBox.Show("Ошибочный формат данных", "Ошибка добавления", MessageBoxButton.OKCancel, MessageBoxImage.Error);
+            }
 
-            PostgresContext.Instance.SaveChanges();
-
+            
         }
 
         private void inventoryDG_AddingNewItem(object sender, AddingNewItemEventArgs e)
@@ -66,6 +75,38 @@ namespace Theatre.UserControls.AccountantUC
             {
                 IdИнвентаря = PostgresContext.Instance.Инвентарьs.Max(x => x.IdИнвентаря) + 1
             };
+        }
+
+        private void Searh_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            IEnumerable<Инвентарь> inventory= PostgresContext.Instance.Инвентарьs.Local.ToObservableCollection().Where(x => x.НазваниеИнвентаря.Contains(Searh.Text) ||
+
+           x.СрокИспользования.ToString() == (Searh.Text) || x.Стоимость.ToString() == (Searh.Text) || x.КодТипаNavigation.ToString().Contains(Searh.Text));
+            if (inventory.Count()!=0)
+                inventoryDG.ItemsSource = inventory;
+            else
+                inventoryDG.ItemsSource = PostgresContext.Instance.Инвентарьs.Local.ToObservableCollection();
+        }
+
+        private void Searh_LostFocus(object sender, RoutedEventArgs e)
+        {
+            inventoryDG.ItemsSource = PostgresContext.Instance.Инвентарьs.Local.ToObservableCollection();
+        }
+
+        private void DatePicker_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            IEnumerable<Инвентарь> inventory = PostgresContext.Instance.Инвентарьs.Local.ToObservableCollection().Where(x => x.ДатаНачалаИспользования==DatePick.SelectedDate ||
+
+           x.ДатаСписания == DatePick.SelectedDate );
+            if (inventory.Count() != 0)
+                inventoryDG.ItemsSource = inventory;
+            else
+                inventoryDG.ItemsSource = PostgresContext.Instance.Инвентарьs.Local.ToObservableCollection();
+        }
+
+        private void DatePick_LostFocus(object sender, RoutedEventArgs e)
+        {
+            inventoryDG.ItemsSource = PostgresContext.Instance.Инвентарьs.Local.ToObservableCollection();
         }
     }
 }

@@ -1,106 +1,109 @@
 ﻿<UserControl x:Class="Theatre.UserControls.SignIn"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:Theatre.UserControls"
-             mc:Ignorable="d" 
+             mc:Ignorable="d"
              xmlns:md="http://materialdesigninxaml.net/winfx/xaml/themes"
              TextElement.Foreground="{DynamicResource MaterialDesignBody}"
              TextElement.FontSize="14"
              FontFamily="{md:MaterialDesignFont}"
-             d:DesignHeight="550" d:DesignWidth="800">
+             d:DesignHeight="550"
+             d:DesignWidth="800">
     <UserControl.Background>
         <ImageBrush ImageSource="pack://application:,,,/images/theatre.jpg"
-                    Stretch="UniformToFill"/>
+                    Stretch="UniformToFill" />
     </UserControl.Background>
-    
-    <Grid>
-        
-   
-    <md:Card HorizontalAlignment="Center" VerticalAlignment="Center"
-             Width="300"
-             Height="300"
-             Padding="10"
-             UniformCornerRadius="10"
-             BorderThickness="1"
-             BorderBrush="Black"
-             md:ElevationAssist.Elevation="Dp16">
-        <Grid>
-        
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="2*"/>
-            
-            <RowDefinition Height="2*"/>
-            <RowDefinition Height="2*"/>
-             <RowDefinition Height="*"/>
-        </Grid.RowDefinitions>
-        
-        <TextBlock Text="Вход" TextAlignment="Center"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   FontSize="24"
-                   FontWeight="Bold"
-                   Foreground="{Binding Path=Foreground, ElementName=Sign_In}">
-            
-        </TextBlock>
-        <TextBox x:Name="Login"
-                 VerticalAlignment="Center"
-                 Grid.Row="1"
-                    HorizontalAlignment="Center"
-                    Width="220"
-                    
-            md:HintAssist.HelperText="Введите логин"
-            md:HintAssist.Hint="Логин"
-            md:TextFieldAssist.HasClearButton="True"
-            md:TextFieldAssist.LeadingIcon="Account"
-                md:TextFieldAssist.HasLeadingIcon="True">
 
-        </TextBox>
-            
+    <Grid>
+
+
+        <md:Card HorizontalAlignment="Center"
+                 VerticalAlignment="Center"
+                 Width="300"
+                 Height="300"
+                 Padding="10"
+                 UniformCornerRadius="10"
+                 BorderThickness="1"
+                 BorderBrush="Black"
+                 md:ElevationAssist.Elevation="Dp16">
+            <Grid>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="2*" />
+
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="2*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Вход"
+                           TextAlignment="Center"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Foreground="{Binding Path=Foreground, ElementName=Sign_In}">
+
+                </TextBlock>
+
+                <md:PackIcon Kind="User"
+                             Grid.Row="1"
+                             VerticalAlignment="Center"
+                             Foreground="{Binding BorderBrush, ElementName=Login, UpdateSourceTrigger=PropertyChanged}" />
+                <TextBox x:Name="Login"
+                         VerticalAlignment="Center"
+                         Grid.Row="1"
+                         HorizontalAlignment="Center"
+                         Width="220"
+                         md:HintAssist.HelperText="Введите логин"
+                         md:HintAssist.Hint="Логин"
+                         md:TextFieldAssist.HasClearButton="True">
+
+                </TextBox>
+
+                <md:PackIcon Kind="Key"
+                             Grid.Row="2"
+                             VerticalAlignment="Center"
+                             Foreground="{Binding BorderBrush, ElementName=Password, UpdateSourceTrigger=PropertyChanged}" />
                 <PasswordBox VerticalAlignment="Center"
-                  Grid.Row="2"
-                    HorizontalAlignment="Center"
-                    Width="220"
-                    x:Name="Password"
-                     md:HintAssist.HelperText="Введите пароль"
-                    md:HintAssist.Hint="Пароль"
-                    md:TextFieldAssist.HasClearButton="True"
-                    md:PasswordBoxAssist.IsPasswordRevealed="True"
-                    
-                    md:PasswordBoxAssist.PasswordRevealedIcon="Password"
-                     
-                     >
-           
-        
-        </PasswordBox>
-        <Button Grid.Row="3"
-                Content="Войти"
-                x:Name="Sign_In"
-                Height="35"
-                Click="Sign_In_Click"
-                VerticalAlignment="Center"
-                HorizontalAlignment="Center"
-                Padding="40 0"
-                FontSize="20"
-                Margin="0 10 0 0"
-                
-                Style="{StaticResource MaterialDesignOutlinedButton}"
-                >
-            
-        </Button>
-        <Button 
-            Grid.Row="4"
-        x:Name="toSignUp"
-            md:ElevationAssist.Elevation="Dp16"
-  Click="toSignUp_Click"
-  Content="Зарегистрироваться"
-  Style="{StaticResource MaterialDesignFlatLightButton}"
-  ToolTip="MaterialDesignFlatLightButton" />
+                             Grid.Row="2"
+                             HorizontalAlignment="Center"
+                             Width="220"
+                             x:Name="Password"
+                             md:HintAssist.HelperText="Введите пароль"
+                             md:TextFieldAssist.HasClearButton="True"
+                             
+                             md:PasswordBoxAssist.IsPasswordRevealed="True"
+                             
+                             md:HintAssist.Hint="Пароль">
+
+                </PasswordBox>
+                <Button Grid.Row="3"
+                        Content="Войти"
+                        x:Name="Sign_In"
+                        Height="35"
+                        Click="Sign_In_Click"
+                        VerticalAlignment="Center"
+                        HorizontalAlignment="Center"
+                        Padding="40 0"
+                        FontSize="20"
+                        Margin="0 10 0 0"
+                        Style="{StaticResource MaterialDesignOutlinedButton}">
+
+                </Button>
+                <Button Grid.Row="4"
+                        x:Name="toSignUp"
+                        md:ElevationAssist.Elevation="Dp16"
+                        Click="toSignUp_Click"
+                        Content="Зарегистрироваться"
+                        Style="{StaticResource MaterialDesignFlatLightButton}"
+                        ToolTip="MaterialDesignFlatLightButton" />
 
             </Grid>
-    </md:Card >
+        </md:Card >
     </Grid>
 
 </UserControl>

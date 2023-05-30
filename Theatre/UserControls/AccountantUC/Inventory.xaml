@@ -16,17 +16,56 @@
     </UserControl.Background>
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="*">
+
+            </RowDefinition>
             <RowDefinition Height="4*">
 
             </RowDefinition>
             <RowDefinition Height="*">
 
             </RowDefinition>
+            
         </Grid.RowDefinitions>
+        <Grid>
+            
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <TextBox Name="Searh"
+                 md:HintAssist.Hint="Поиск"
+                 VerticalAlignment="Center"
+                 Width="150"
+                 TextChanged="Searh_TextChanged"
+                 LostFocus="Searh_LostFocus"
+                 HorizontalAlignment="Center"
+                 Margin="100 0 0 0"
+                 md:TextFieldAssist.HasClearButton="True"
+                 md:TextFieldAssist.HasLeadingIcon="True"
+                 md:TextFieldAssist.LeadingIcon="Search"
+                 >
+            
+        </TextBox>
+            <DatePicker
+                Name="DatePick"
+                LostFocus="DatePick_LostFocus"
+                Margin="0 0 100 0"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                SelectedDateFormat="Short"
+                SelectedDateChanged="DatePicker_SelectedDateChanged"
+  Width="200"
+  md:HintAssist.Hint="Выберите дату "
+  md:TextFieldAssist.HasClearButton="True"
+ Style="{StaticResource MaterialDesignOutlinedDatePicker}" />
+        </Grid>
         <md:Card VerticalAlignment="Center"
                  HorizontalAlignment="Center"
-                 Margin="40 30 40 80"
-                 >
+                 Margin="40 0 40 0"
+                 Grid.Row="1"
+                                  >
             <DataGrid
             AutoGeneratingColumn="inventoryDG_AutoGeneratingColumn"
             Name="inventoryDG"
@@ -41,7 +80,7 @@
         </md:Card>
         
             <Button
-  Grid.Row="1"
+  Grid.Row="2"
   Height="45"
                 
 Name="Save"

@@ -45,6 +45,11 @@
                 Foreground="{Binding Path=Foreground, ElementName=SignUpBtn}">
 
                 </TextBlock>
+                <md:PackIcon Kind="User"
+                             Grid.Row="1"
+                             VerticalAlignment="Center"
+                             Foreground="{Binding BorderBrush, ElementName=Login, UpdateSourceTrigger=PropertyChanged}" />
+
                 <TextBox x:Name="Login"
                 VerticalAlignment="Center"
                 Grid.Row="1"
@@ -54,10 +59,14 @@
                 md:HintAssist.HelperText="Введите логин"
                 md:HintAssist.Hint="Логин"
                 md:TextFieldAssist.HasClearButton="True"
-                md:TextFieldAssist.LeadingIcon="Account"
-                md:TextFieldAssist.HasLeadingIcon="True">
+                >
 
                 </TextBox>
+                <md:PackIcon Kind="Email"
+                             Grid.Row="2"
+                             VerticalAlignment="Center"
+                             Foreground="{Binding BorderBrush, ElementName=Login, UpdateSourceTrigger=PropertyChanged}" />
+
                 <TextBox x:Name="Email"
                 VerticalAlignment="Center"
                 Grid.Row="2"
@@ -67,10 +76,13 @@
                 md:HintAssist.HelperText="Введите адрес эл.почты"
                 md:HintAssist.Hint="Почта"
                 md:TextFieldAssist.HasClearButton="True"
-                md:TextFieldAssist.LeadingIcon="Email"
-                md:TextFieldAssist.HasLeadingIcon="True">
+                >
 
                 </TextBox>
+                <md:PackIcon Kind="Key"
+                             Grid.Row="3"
+                             VerticalAlignment="Center"
+                             Foreground="{Binding BorderBrush, ElementName=Password, UpdateSourceTrigger=PropertyChanged}" />
                 <PasswordBox VerticalAlignment="Center"
                 Grid.Row="3"
                 

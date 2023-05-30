@@ -17,6 +17,11 @@ public partial class PostgresContext : DbContext
     {
     }
 
+    static PostgresContext()
+    {
+        AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+    }
+
     public virtual DbSet<AverageTermUse> AverageTermUses { get; set; }
 
     public virtual DbSet<InfoActorsRole> InfoActorsRoles { get; set; }
@@ -149,7 +154,7 @@ public partial class PostgresContext : DbContext
         modelBuilder.Entity<Sale>(entity =>
         {
             entity
-                .HasNoKey()
+                
                 .ToView("sales");
 
             entity.Property(e => e.ДатаПродаж).HasColumnName("Дата_продаж");

@@ -63,7 +63,12 @@
 
                 </MenuItem>
                 <MenuItem
-      Header="Аккаунт" Name="accAccountant" Click="account_Click"/>
+      Header="Статистика продаж" Name="salesStatistic" Click="salesStatistic_Click"/>
+
+
+                <MenuItem
+      Header="Аккаунт" Name="accAccountant" Click="account_Click"
+                   />
 
 
             </Menu>

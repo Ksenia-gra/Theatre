@@ -26,6 +26,9 @@ namespace Theatre.UserControls
         {
             InitializeComponent();
             this.DataContext = user;
+          
+            if(user.КодРолиNavigation != null && user.КодРолиNavigation.НаименованиеРоли=="accountant")
+                    BuyedTickets.Visibility= Visibility.Collapsed;
             ObservableCollection<object> ticketsList = new ObservableCollection<object>();
             foreach (Билеты s in PostgresContext.Instance.Билетыs.Local)
             {
